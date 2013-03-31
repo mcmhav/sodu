@@ -75,8 +75,7 @@ public class A {
 	}
 	
 	private void a1(int p1, int p2){
-		boolean s = true;
-		if(b[p1][p2]==0&&s){
+		if(b[p1][p2]==0){
 			ArrayList<Integer> v = new ArrayList<Integer>();
 			for(int i=1;i<=9;i++){
 				boolean r = true;
@@ -136,62 +135,17 @@ public class A {
 					for(int j = 0; j <= 8; j++){
 						if(j<=2){
 							if(((j+1)+3*i)==p){
-								b[i][j]=m;
-								if(j<=2)
-									h.put(((j+1)+3*i), l);
-								else if(j<=5)
-									h.put(((j+1)+3*i)+24, l);
-								else if(j<=8)
-									h.put(((j+1)+3*i)+24*2, l);
-								this.m--;
-								f++;
-								for (int j2 = box(i,j)*9+1; j2 <= box(i,j)*9+9; j2++) {
-									for (int i2 = 0; i2 < h.get(j2).size(); i2++) {
-										if((Integer)h.get(j2).get(i2)==b[i][j]){
-											h.get(j2).remove(i2);
-										}
-									}
-								}
+                                a2h(m,i,j);
 								break;
 							}
 						}else if(j<=5){
 							if((((j+1)+3*i)+24)==p){
-								b[i][j]=m;
-								if(j<=2)
-									h.put(((j+1)+3*i), l);
-								else if(j<=5)
-									h.put(((j+1)+3*i)+24, l);
-								else if(j<=8)
-									h.put(((j+1)+3*i)+24*2, l);
-								this.m--;
-								f++;
-								for (int j2 = box(i,j)*9+1; j2 <= box(i,j)*9+9; j2++) {
-									for (int i2 = 0; i2 < h.get(j2).size(); i2++) {
-										if((Integer)h.get(j2).get(i2)==b[i][j]){
-											h.get(j2).remove(i2);
-										}
-									}
-								}
+                                a2h(m,i,j);
 								break;
 							}
 						}else if(j<=8){
 							if((((j+1)+3*i)+24*2)==p){
-								b[i][j]=m;
-								if(j<=2)
-									h.put(((j+1)+3*i), l);
-								else if(j<=5)
-									h.put(((j+1)+3*i)+24, l);
-								else if(j<=8)
-									h.put(((j+1)+3*i)+24*2, l);
-								this.m--;
-								f++;
-								for (int j2 = box(i,j)*9+1; j2 <= box(i,j)*9+9; j2++) {
-									for (int i2 = 0; i2 < h.get(j2).size(); i2++) {
-										if((Integer)h.get(j2).get(i2)==b[i][j]){
-											h.get(j2).remove(i2);
-										}
-									}
-								}
+								a2h(m,i,j);
 								break;
 							}
 						}
@@ -200,6 +154,25 @@ public class A {
 			}
 		}
 	}
+
+    private void a2h(int m, int i, int j){
+        b[i][j]=m;
+        if(j<=2)
+            h.put(((j+1)+3*i), l);
+        else if(j<=5)
+            h.put(((j+1)+3*i)+24, l);
+        else if(j<=8)
+            h.put(((j+1)+3*i)+24*2, l);
+        this.m--;
+        f++;
+        for (int j2 = box(i,j)*9+1; j2 <= box(i,j)*9+9; j2++) {
+            for (int i2 = 0; i2 < h.get(j2).size(); i2++) {
+                if((Integer)h.get(j2).get(i2)==b[i][j]){
+                    h.get(j2).remove(i2);
+                }
+            }
+        }
+    }
 
 	private void a3c(int p1, int p2){
 		if(b[p1][p2]==0){
